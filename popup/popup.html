@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <title>YouTube Live Translate</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>YouTube Live Translate</h1>
+    <label class="switch">
+      <input type="checkbox" id="enabled">
+      <span>Увімкнено</span>
+    </label>
+  </header>
+
+  <label class="field">
+    <span>Мова перекладу</span>
+    <select id="targetLang">
+      <option value="uk">Українська</option>
+      <option value="en">English</option>
+      <option value="pl">Polski</option>
+      <option value="de">Deutsch</option>
+      <option value="fr">Français</option>
+      <option value="es">Español</option>
+      <option value="it">Italiano</option>
+      <option value="pt">Português</option>
+      <option value="cs">Čeština</option>
+      <option value="tr">Türkçe</option>
+      <option value="ja">日本語</option>
+      <option value="ko">한국어</option>
+      <option value="zh-CN">中文</option>
+    </select>
+  </label>
+
+  <label class="check"><input type="checkbox" id="speak"> Озвучувати переклад</label>
+  <label class="check"><input type="checkbox" id="showOriginal"> Показувати оригінал</label>
+
+  <label class="field">
+    <span>Голос</span>
+    <select id="voiceName"><option value="">Автоматично</option></select>
+  </label>
+
+  <label class="field">
+    <span>Швидкість мовлення <output id="rateOut"></output></span>
+    <input type="range" id="rate" min="0.7" max="1.8" step="0.05">
+  </label>
+
+  <label class="field">
+    <span>Гучність оригіналу під час озвучки <output id="duckOut"></output></span>
+    <input type="range" id="duckVolume" min="0" max="1" step="0.05">
+  </label>
+
+  <label class="field">
+    <span>Розмір шрифту <output id="fontOut"></output></span>
+    <input type="range" id="fontSize" min="14" max="40" step="1">
+  </label>
+
+  <h2>Відео без субтитрів</h2>
+  <label class="check"><input type="checkbox" id="sttEnabled"> Розпізнавати мову через Deepgram</label>
+
+  <label class="field">
+    <span>Deepgram API-ключ</span>
+    <input type="password" id="deepgramKey" placeholder="Вставте ключ" autocomplete="off" spellcheck="false">
+  </label>
+
+  <label class="field">
+    <span>Мова відео</span>
+    <select id="sttLanguage">
+      <option value="multi">Автовизначення (en, es, fr, de, ru, pt, ja, it, nl, hi)</option>
+      <option value="en">English</option>
+      <option value="uk">Українська</option>
+      <option value="ru">Русский</option>
+      <option value="pl">Polski</option>
+      <option value="de">Deutsch</option>
+      <option value="fr">Français</option>
+      <option value="es">Español</option>
+      <option value="it">Italiano</option>
+      <option value="pt">Português</option>
+      <option value="cs">Čeština</option>
+      <option value="tr">Türkçe</option>
+      <option value="ja">日本語</option>
+      <option value="ko">한국어</option>
+      <option value="zh">中文</option>
+    </select>
+  </label>
+
+  <p class="hint">Спочатку використовуються субтитри YouTube. Якщо їх немає, після кількох секунд звук відео розпізнається через Deepgram (платно, ~$0.26/год; ключ: console.deepgram.com).</p>
+
+  <script src="popup.js"></script>
+</body>
+</html>

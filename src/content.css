@@ -1,0 +1,51 @@
+#movie_player.ytlt-hide-native .ytp-caption-window-container {
+  opacity: 0 !important;
+}
+
+.ytlt-overlay {
+  --ytlt-font-size: 24px;
+  position: absolute;
+  left: 50%;
+  bottom: 12%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 86%;
+  z-index: 60;
+  pointer-events: none;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.ytlt-overlay.ytlt-visible {
+  opacity: 1;
+}
+
+.ytp-autohide .ytlt-overlay {
+  bottom: 6%;
+}
+
+.ytlt-box {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 6px;
+  background: rgba(8, 8, 8, 0.75);
+  font-family: "YouTube Noto", Roboto, Arial, sans-serif;
+  line-height: 1.3;
+}
+
+.ytlt-tr {
+  color: #fff;
+  font-size: var(--ytlt-font-size);
+  font-weight: 500;
+}
+
+.ytlt-orig {
+  margin-top: 4px;
+  color: #c8c8c8;
+  font-size: calc(var(--ytlt-font-size) * 0.7);
+}
+
+.ytlt-orig:empty {
+  display: none;
+}
