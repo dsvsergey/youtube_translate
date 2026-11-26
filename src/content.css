@@ -49,3 +49,44 @@
 .ytlt-orig:empty {
   display: none;
 }
+
+.ytlt-toggle {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0 !important;
+  vertical-align: top;
+  opacity: 0.55;
+}
+
+.ytlt-toggle svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+  flex: none;
+}
+
+.ytlt-toggle[aria-pressed="true"] {
+  opacity: 1;
+  color: #3ea6ff;
+}
+
+.ytlt-toast {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 61;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: rgba(8, 8, 8, 0.8);
+  color: #fff;
+  font: 500 16px "YouTube Noto", Roboto, Arial, sans-serif;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.ytlt-toast.ytlt-visible {
+  opacity: 1;
+}

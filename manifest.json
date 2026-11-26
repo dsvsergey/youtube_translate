@@ -1,10 +1,14 @@
 {
   "manifest_version": 3,
   "name": "YouTube Live Translate",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Перекладає субтитри YouTube у реальному часі та озвучує переклад.",
-  "permissions": ["storage"],
-  "host_permissions": ["https://clients5.google.com/*"],
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://clients5.google.com/*"
+  ],
   "background": {
     "service_worker": "src/background.js"
   },
@@ -14,16 +18,36 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://www.youtube.com/*"],
-      "js": ["src/inject.js"],
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "src/inject.js"
+      ],
       "run_at": "document_start",
       "world": "MAIN"
     },
     {
-      "matches": ["https://www.youtube.com/*"],
-      "js": ["src/lib.js", "src/stt.js", "src/content.js"],
-      "css": ["src/content.css"],
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "src/lib.js",
+        "src/stt.js",
+        "src/content.js"
+      ],
+      "css": [
+        "src/content.css"
+      ],
       "run_at": "document_start"
     }
-  ]
+  ],
+  "commands": {
+    "toggle-translation": {
+      "suggested_key": {
+        "default": "Alt+Shift+T"
+      },
+      "description": "Увімкнути / вимкнути переклад"
+    }
+  }
 }

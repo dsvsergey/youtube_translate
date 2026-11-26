@@ -61,3 +61,19 @@ async function requestBatch(texts, target) {
     return typeof item === 'string' ? item : orig;
   });
 }
+
+// ---------- manual on/off: keyboard shortcut + "OFF" badge ----------
+chrome.commands.onCommand.addListener((command) => {
+  if (command !== 'toggle-translation') return;
+  chrome.storage.sync.get({ enabled: true }, ({ enabled }) => chrome.storage.sync.set({ enabled: !enabled }));
+});
+
+function updateBadge(enabled) {
+  chrome.action.setBadgeText({ text: enabled ? '' : 'OFF' });
+  chrome.action.setBadgeBackgroundColor({ color: '#777' });
+}
+
+chrome.storage.sync.get({ enabled: true }, ({ enabled }) => updateBadge(enabled));
+chrome.storage.onChanged.addListener((changes, area) => {
+  if (area === 'sync' && changes.enabled) updateBadge(changes.enabled.newValue);
+});

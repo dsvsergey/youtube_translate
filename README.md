@@ -11,6 +11,14 @@ A Chrome extension that translates YouTube subtitles while you watch, shows the 
 3. Click **Load unpacked** and select this folder.
 4. Open any YouTube video. Settings are available from the extension icon.
 
+## Turning translation on and off
+
+- The translate button in the YouTube player controls (next to the settings gear) — blue means on.
+- Keyboard shortcut **Alt+Shift+T** (can be changed at `chrome://extensions/shortcuts`).
+- The **Enabled** switch in the extension popup.
+
+When translation is off, the extension icon shows an **OFF** badge.
+
 ## How it works
 
 - **Regular videos.** `src/inject.js` intercepts the `/api/timedtext` response that the player itself fetches (YouTube rejects a direct request without a signed token). If subtitles are off, the extension clicks the CC button once so the player loads them. Words are merged into sentences based on punctuation, pauses and length (`src/lib.js`) and translated ahead of time in batches — about 40 phrases ahead of the playback position.
