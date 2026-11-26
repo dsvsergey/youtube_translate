@@ -1,30 +1,32 @@
 # YouTube Live Translate
 
-Розширення Chrome, яке перекладає субтитри YouTube під час перегляду, показує переклад поверх відео й озвучує його голосом, приглушуючи оригінальний звук.
+**English** | [Українська](README.uk.md)
 
-## Встановлення
+A Chrome extension that translates YouTube subtitles while you watch, shows the translation over the video, and reads it aloud while ducking the original audio.
 
-1. Відкрийте `chrome://extensions`.
-2. Увімкніть «Режим розробника» (Developer mode).
-3. Натисніть «Завантажити розпаковане» (Load unpacked) і виберіть цю папку.
-4. Відкрийте будь-яке відео на YouTube. Налаштування — через іконку розширення.
+## Installation
 
-## Як це працює
+1. Open `chrome://extensions`.
+2. Turn on **Developer mode**.
+3. Click **Load unpacked** and select this folder.
+4. Open any YouTube video. Settings are available from the extension icon.
 
-- **Звичайні відео.** `src/inject.js` перехоплює відповідь `/api/timedtext`, яку отримує сам плеєр (власний запит YouTube не пропускає без підписаного токена). Якщо субтитри вимкнені, розширення один раз натискає кнопку CC, щоб плеєр їх завантажив. Слова об'єднуються в речення за розділовими знаками, паузами та довжиною (`src/lib.js`) і перекладаються пакетами наперед — приблизно 40 фраз попереду позиції відтворення.
-- **Трансляції та запасний варіант.** Якщо перехопити субтитри не вдалося (наприклад, у прямому ефірі), розширення читає субтитри, які плеєр показує на екрані, виділяє нові слова й перекладає їх, коли закінчується речення або настає пауза.
-- **Відео без субтитрів — Deepgram.** Якщо відео відтворюється 6 с і за цей час не з'явилося жодних субтитрів (або в плеєрі взагалі немає кнопки CC — тоді 1,5 с), `src/stt.js` захоплює звук прямо з відео (`video.captureStream()`) і передає його через MediaRecorder (webm/opus) у потоковий WebSocket Deepgram. Готові фрази (`speech_final` / `UtteranceEnd`) перекладаються й озвучуються. Щойно з'являються субтитри, розпізнавання вимикається, тож гроші не витрачаються. Потрібен API-ключ з console.deepgram.com: його вводять у налаштуваннях, а зберігається він у `chrome.storage.local` і не синхронізується з іншими пристроями. Модель: `nova-3` для автовизначення мови й англійської, `nova-2` для інших мов.
-- **Озвучка.** Web Speech API (`speechSynthesis`). Швидкість мовлення автоматично зростає (до 2×), якщо фраза не вміщується в проміжок до наступної. Якщо озвучка суттєво відстає, черга скидається. Під час мовлення гучність відео зменшується, на паузі озвучка теж ставиться на паузу, а після перемотування — зупиняється.
-- **Переклад.** Безкоштовний ендпоінт Google `clients5.google.com/translate_a/t` (без ключа), запити йдуть із `src/background.js`.
+## How it works
 
-## Обмеження
+- **Regular videos.** `src/inject.js` intercepts the `/api/timedtext` response that the player itself fetches (YouTube rejects a direct request without a signed token). If subtitles are off, the extension clicks the CC button once so the player loads them. Words are merged into sentences based on punctuation, pauses and length (`src/lib.js`) and translated ahead of time in batches — about 40 phrases ahead of the playback position.
+- **Live streams and fallback.** If the subtitles can't be intercepted (for example, during a live stream), the extension reads the captions the player displays on screen, picks out the new words, and translates them when a sentence ends or a pause occurs.
+- **Videos without subtitles — Deepgram.** If a video has been playing for 6 s with no subtitles (or 1.5 s if the player has no CC button at all), `src/stt.js` captures the audio straight from the video (`video.captureStream()`) and streams it through MediaRecorder (webm/opus) to Deepgram's streaming WebSocket. Finished phrases (`speech_final` / `UtteranceEnd`) are translated and spoken. As soon as subtitles appear, speech recognition stops so no money is wasted. Requires an API key from console.deepgram.com: you enter it in the settings, and it is stored in `chrome.storage.local` and not synced to other devices. Model: `nova-3` for auto-detect and English, `nova-2` for other languages.
+- **Voice-over.** Web Speech API (`speechSynthesis`). The speech rate automatically increases (up to 2×) if a phrase doesn't fit in the gap before the next one. If the voice-over falls far behind, the queue is reset. While speaking, the video volume is lowered; pausing the video pauses the voice-over, and seeking stops it.
+- **Translation.** Google's free `clients5.google.com/translate_a/t` endpoint (no key required); requests are sent from `src/background.js`.
 
-- Без субтитрів переклад запізнюється на 1–3 с від мовлення: розпізнати звук наперед неможливо.
-- Автовизначення мови (`multi`) підтримує лише en, es, fr, de, ru, pt, ja, it, nl, hi. Для української та інших мов виберіть мову відео вручну.
-- Якість голосу залежить від голосів, встановлених у системі. На macOS для української є голос «Lesya». Інші голоси можна додати в «Системні параметри → Спеціальні можливості → Озвучений вміст».
-- Ендпоінт Google неофіційний і може обмежувати кількість запитів.
+## Limitations
 
-## Тести
+- Without subtitles, the translation lags the speech by 1–3 s: audio can't be recognized ahead of time.
+- Language auto-detect (`multi`) supports only en, es, fr, de, ru, pt, ja, it, nl, hi. For Ukrainian and other languages, select the video language manually.
+- Voice quality depends on the voices installed on your system. On macOS, Ukrainian has the "Lesya" voice. You can add more voices in System Settings → Accessibility → Spoken Content.
+- The Google endpoint is unofficial and may rate-limit requests.
+
+## Tests
 
 ```sh
 node --test tests/*.test.js
