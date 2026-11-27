@@ -4,6 +4,12 @@ const MAX_BATCH_CHARS = 3500;
 const cache = new Map();
 
 chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
+  if (msg?.type === 'messages' && /^[a-z]{2}$/.test(msg.lang)) {
+    fetch(chrome.runtime.getURL(`_locales/${msg.lang}/messages.json`))
+      .then((res) => res.json())
+      .then(sendResponse, () => sendResponse(null));
+    return true;
+  }
   if (msg?.type !== 'translate') return;
   translateAll(msg.texts, msg.target).then(
     (result) => sendResponse({ ok: true, result }),

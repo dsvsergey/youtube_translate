@@ -1,0 +1,89 @@
+{
+  "extName": {
+    "message": "YouTube Live Translate"
+  },
+  "extDescription": {
+    "message": "Translates YouTube videos in real time: subtitles over the video and a voice-over in your language."
+  },
+  "cmdToggle": {
+    "message": "Turn translation on / off"
+  },
+  "translationOn": {
+    "message": "Translation on"
+  },
+  "translationOff": {
+    "message": "Translation off"
+  },
+  "toggleHint": {
+    "message": "Alt+Shift+T or the button in the player"
+  },
+  "targetLang": {
+    "message": "Translate to"
+  },
+  "speak": {
+    "message": "Read translation aloud"
+  },
+  "showOriginal": {
+    "message": "Show original"
+  },
+  "voice": {
+    "message": "Voice"
+  },
+  "voiceAuto": {
+    "message": "Automatic"
+  },
+  "rate": {
+    "message": "Speech speed"
+  },
+  "duckVolume": {
+    "message": "Original volume during voice-over"
+  },
+  "fontSize": {
+    "message": "Font size"
+  },
+  "noSubsHeading": {
+    "message": "Videos without subtitles"
+  },
+  "sttEnabled": {
+    "message": "Recognise speech with Deepgram"
+  },
+  "deepgramKey": {
+    "message": "Deepgram API key"
+  },
+  "deepgramKeyPlaceholder": {
+    "message": "Paste your key"
+  },
+  "videoLang": {
+    "message": "Video language"
+  },
+  "sttAuto": {
+    "message": "Auto-detect (en, es, fr, de, ru, pt, ja, it, nl, hi)"
+  },
+  "sttHint": {
+    "message": "YouTube subtitles are used first. If there are none, after a few seconds the video's audio is recognised with Deepgram (paid, ~$0.26/hour; key: console.deepgram.com)."
+  },
+  "supportPrompt": {
+    "message": "Like the extension?"
+  },
+  "donateMonobank": {
+    "message": "💛 Support (monobank)"
+  },
+  "playerTurnOff": {
+    "message": "Turn translation off (Alt+Shift+T)"
+  },
+  "playerTurnOn": {
+    "message": "Turn translation on (Alt+Shift+T)"
+  },
+  "deepgramConnectFailed": {
+    "message": "Deepgram: couldn't connect. Check the API key in the settings."
+  },
+  "audioCaptureFailed": {
+    "message": "Couldn't capture the video's audio: $1"
+  },
+  "uiLang": {
+    "message": "Interface language"
+  },
+  "uiLangAuto": {
+    "message": "Auto"
+  }
+}

@@ -15,7 +15,7 @@ Translates YouTube videos in real time: subtitles on top of the video and a voic
 
 **Category:** Accessibility (alternative: Education)
 
-**Language:** Ukrainian (UI language)
+**Language:** English (default) + Ukrainian — the extension name and description come from `_locales/`, so add a Ukrainian listing too.
 
 **Description:**
 

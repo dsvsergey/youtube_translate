@@ -29,6 +29,8 @@ To update, download the new release, replace the folder, and click ↻ on the ex
 
 When translation is off, the extension icon shows an **OFF** badge.
 
+The interface language (English / Українська) follows the browser by default and can be changed in the selector at the top of the extension popup.
+
 ## How it works
 
 - **Regular videos.** `src/inject.js` intercepts the `/api/timedtext` response that the player itself fetches (YouTube rejects a direct request without a signed token). If subtitles are off, the extension clicks the CC button once so the player loads them. Words are merged into sentences based on punctuation, pauses and length (`src/lib.js`) and translated ahead of time in batches — about 40 phrases ahead of the playback position.

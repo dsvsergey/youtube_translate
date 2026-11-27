@@ -1,0 +1,89 @@
+{
+  "extName": {
+    "message": "YouTube Live Translate"
+  },
+  "extDescription": {
+    "message": "Перекладає відео YouTube у реальному часі: субтитри поверх відео та озвучка вашою мовою."
+  },
+  "cmdToggle": {
+    "message": "Увімкнути / вимкнути переклад"
+  },
+  "translationOn": {
+    "message": "Переклад увімкнено"
+  },
+  "translationOff": {
+    "message": "Переклад вимкнено"
+  },
+  "toggleHint": {
+    "message": "Alt+Shift+T або кнопка в плеєрі"
+  },
+  "targetLang": {
+    "message": "Мова перекладу"
+  },
+  "speak": {
+    "message": "Озвучувати переклад"
+  },
+  "showOriginal": {
+    "message": "Показувати оригінал"
+  },
+  "voice": {
+    "message": "Голос"
+  },
+  "voiceAuto": {
+    "message": "Автоматично"
+  },
+  "rate": {
+    "message": "Швидкість мовлення"
+  },
+  "duckVolume": {
+    "message": "Гучність оригіналу під час озвучки"
+  },
+  "fontSize": {
+    "message": "Розмір шрифту"
+  },
+  "noSubsHeading": {
+    "message": "Відео без субтитрів"
+  },
+  "sttEnabled": {
+    "message": "Розпізнавати мову через Deepgram"
+  },
+  "deepgramKey": {
+    "message": "Deepgram API-ключ"
+  },
+  "deepgramKeyPlaceholder": {
+    "message": "Вставте ключ"
+  },
+  "videoLang": {
+    "message": "Мова відео"
+  },
+  "sttAuto": {
+    "message": "Автовизначення (en, es, fr, de, ru, pt, ja, it, nl, hi)"
+  },
+  "sttHint": {
+    "message": "Спочатку використовуються субтитри YouTube. Якщо їх немає, після кількох секунд звук відео розпізнається через Deepgram (платно, ~$0.26/год; ключ: console.deepgram.com)."
+  },
+  "supportPrompt": {
+    "message": "Подобається розширення?"
+  },
+  "donateMonobank": {
+    "message": "💛 Підтримати (monobank)"
+  },
+  "playerTurnOff": {
+    "message": "Вимкнути переклад (Alt+Shift+T)"
+  },
+  "playerTurnOn": {
+    "message": "Увімкнути переклад (Alt+Shift+T)"
+  },
+  "deepgramConnectFailed": {
+    "message": "Deepgram: не вдалося підключитися. Перевірте API-ключ у налаштуваннях."
+  },
+  "audioCaptureFailed": {
+    "message": "Не вдалося захопити звук відео: $1"
+  },
+  "uiLang": {
+    "message": "Мова інтерфейсу"
+  },
+  "uiLangAuto": {
+    "message": "Автоматично"
+  }
+}

@@ -52,7 +52,7 @@ globalThis.YTLTStt = (() => {
       try {
         stream = this.video.captureStream();
       } catch (err) {
-        return this._fail(`Не вдалося захопити звук відео: ${err.message}`);
+        return this._fail(YTLT_I18N.t('audioCaptureFailed', [err.message]));
       }
       const tracks = stream.getAudioTracks();
       if (!tracks.length) return this._scheduleReconnect(1000); // media not loaded yet
@@ -76,7 +76,7 @@ globalThis.YTLTStt = (() => {
         if (!this.running) return;
         // Browsers hide the HTTP status of a failed handshake; repeated failures almost always mean a bad key.
         if (!opened && ++this.handshakeFailures >= MAX_HANDSHAKE_FAILURES) {
-          return this._fail('Deepgram: не вдалося підключитися. Перевірте API-ключ у налаштуваннях.');
+          return this._fail(YTLT_I18N.t('deepgramConnectFailed'));
         }
         this._scheduleReconnect(opened ? 500 : 2000 * this.handshakeFailures);
       };
