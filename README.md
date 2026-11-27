@@ -6,6 +6,16 @@ A Chrome extension that translates YouTube subtitles while you watch, shows the 
 
 ## Installation
 
+### From a GitHub release
+
+1. Download `youtube-live-translate-v*.zip` from the [latest release](https://github.com/dsvsergey/youtube_translate/releases/latest) and unzip it.
+2. Open `chrome://extensions` and turn on **Developer mode**.
+3. Click **Load unpacked** and select the unzipped folder.
+
+To update, download the new release, replace the folder, and click ↻ on the extension card.
+
+### From source
+
 1. Open `chrome://extensions`.
 2. Turn on **Developer mode**.
 3. Click **Load unpacked** and select this folder.
@@ -33,6 +43,14 @@ When translation is off, the extension icon shows an **OFF** badge.
 - Language auto-detect (`multi`) supports only en, es, fr, de, ru, pt, ja, it, nl, hi. For Ukrainian and other languages, select the video language manually.
 - Voice quality depends on the voices installed on your system. On macOS, Ukrainian has the "Lesya" voice. You can add more voices in System Settings → Accessibility → Spoken Content.
 - The Google endpoint is unofficial and may rate-limit requests.
+
+## Building a release
+
+```sh
+./scripts/build.sh   # → dist/youtube-live-translate-v<version>.zip
+```
+
+The same ZIP is uploaded to GitHub releases and to the Chrome Web Store. Store listing text: [store/listing.md](store/listing.md). Privacy policy: [PRIVACY.md](PRIVACY.md).
 
 ## Tests
 
