@@ -7,5 +7,5 @@ VERSION=$(sed -n 's/.*"version": *"\([^"]*\)".*/\1/p' manifest.json)
 OUT="dist/youtube-live-translate-v$VERSION.zip"
 mkdir -p dist
 rm -f "$OUT"
-zip -qr "$OUT" manifest.json src popup icons/*.png -x '*.DS_Store'
+zip -qr "$OUT" manifest.json _locales src popup icons/*.png -x '*.DS_Store'
 echo "$OUT"
