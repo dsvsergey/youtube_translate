@@ -91,3 +91,31 @@ output {
   color: var(--muted);
   font-size: 12px;
 }
+
+footer {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid color-mix(in srgb, var(--muted) 35%, transparent);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.donate-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.donate-links a {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.donate-links a:hover {
+  background: color-mix(in srgb, var(--accent) 25%, transparent);
+}

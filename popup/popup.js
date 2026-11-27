@@ -11,6 +11,12 @@ const DEFAULTS = {
   sttLanguage: 'multi',
 };
 
+// Donation links shown at the bottom of the popup. The section stays hidden
+// while the list is empty. Example: { label: '☕ Ko-fi', url: 'https://ko-fi.com/<name>' }
+const DONATE_LINKS = [
+  { label: '💛 Підтримати (monobank)', url: 'https://send.monobank.ua/jar/27v9C8zo1L' },
+];
+
 const $ = (id) => document.getElementById(id);
 const outputs = {
   rate: (v) => `${(+v).toFixed(2)}×`,
@@ -59,3 +65,16 @@ chrome.storage.local.get({ deepgramKey: '' }, ({ deepgramKey }) => {
   input.value = deepgramKey;
   input.addEventListener('change', () => chrome.storage.local.set({ deepgramKey: input.value.trim() }));
 });
+
+if (DONATE_LINKS.length) {
+  const box = $('donateLinks');
+  for (const { label, url } of DONATE_LINKS) {
+    const a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = label;
+    box.append(a);
+  }
+  $('support').hidden = false;
+}

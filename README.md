@@ -44,13 +44,17 @@ When translation is off, the extension icon shows an **OFF** badge.
 - Voice quality depends on the voices installed on your system. On macOS, Ukrainian has the "Lesya" voice. You can add more voices in System Settings → Accessibility → Spoken Content.
 - The Google endpoint is unofficial and may rate-limit requests.
 
+## Support the project
+
+If the extension is useful to you, you can support its development: [💛 monobank jar](https://send.monobank.ua/jar/27v9C8zo1L) (any Visa/Mastercard, Apple Pay or Google Pay).
+
 ## Building a release
 
 ```sh
 ./scripts/build.sh   # → dist/youtube-live-translate-v<version>.zip
 ```
 
-The same ZIP is uploaded to GitHub releases and to the Chrome Web Store. Store listing text: [store/listing.md](store/listing.md). Privacy policy: [PRIVACY.md](PRIVACY.md).
+The same ZIP is uploaded to GitHub releases and to the Chrome Web Store. Store listing text: [store/listing.md](store/listing.md). Privacy policy: [PRIVACY.md](PRIVACY.md). Development and monetization plan (in Ukrainian): [ROADMAP.md](ROADMAP.md).
 
 ## Tests
 
